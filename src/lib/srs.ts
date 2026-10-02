@@ -17,6 +17,8 @@ export interface ReviewState {
   /** Epoch ms when the card is next due. */
   due: number;
   lastReviewed: number | null;
+  /** Epoch ms of the first review, used for the daily new-card limit. */
+  firstSeen: number;
   /** Epoch ms of the last change, used for sync conflict resolution. */
   updatedAt: number;
 }
@@ -33,7 +35,17 @@ const HARD_FACTOR = 1.2;
 const QUALITY: Record<Grade, number> = { again: 1, hard: 3, good: 4, easy: 5 };
 
 export function newState(entryId: string, now: number): ReviewState {
-  return { entryId, ease: START_EASE, interval: 0, reps: 0, lapses: 0, due: now, lastReviewed: null, updatedAt: now };
+  return {
+    entryId,
+    ease: START_EASE,
+    interval: 0,
+    reps: 0,
+    lapses: 0,
+    due: now,
+    lastReviewed: null,
+    firstSeen: now,
+    updatedAt: now,
+  };
 }
 
 /** SM-2 ease update: EF' = EF + (0.1 − (5 − q)(0.08 + (5 − q)·0.02)), floored at 1.3. */
@@ -65,6 +77,12 @@ export function schedule(state: ReviewState, grade: Grade, now: number): ReviewS
   else interval = Math.round(state.interval * ease);
 
   return { ...base, reps: state.reps + 1, interval, due: now + interval * DAY };
+}
+
+export function startOfDay(now: number): number {
+  const d = new Date(now);
+  d.setHours(0, 0, 0, 0);
+  return d.getTime();
 }
 
 /** End of the local day containing `now` — "due today" means due before this. */

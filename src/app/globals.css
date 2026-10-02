@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #eef2f8;
+  --ink: #14213d;
+  --muted: #56637d;
+  --tile: #1d4e9e;
+  --tile-2: #f2b632;
+  --card: #ffffff;
+  --ok: #2e7d4f;
+  --bad: #b3382c;
+  --line: #c9d3e6;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1830;
+    --ink: #e8edf7;
+    --muted: #9aa8c4;
+    --tile: #5b8fe0;
+    --tile-2: #f2b632;
+    --card: #18244a;
+    --ok: #5fc48a;
+    --bad: #ef7b6f;
+    --line: #2c3a66;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1830;
+  --ink: #e8edf7;
+  --muted: #9aa8c4;
+  --tile: #5b8fe0;
+  --tile-2: #f2b632;
+  --card: #18244a;
+  --ok: #5fc48a;
+  --bad: #ef7b6f;
+  --line: #2c3a66;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-tile: var(--tile);
+  --color-tile-2: var(--tile-2);
+  --color-card: var(--card);
+  --color-ok: var(--ok);
+  --color-bad: var(--bad);
+  --color-line: var(--line);
+  --font-sans: var(--font-karla), system-ui, sans-serif;
+  --font-serif: var(--font-alegreya), Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* The patterned tile card from the original page. */
+.tile {
+  position: relative;
+  border-radius: 18px;
+  padding: 14px;
+  border: 10px solid transparent;
+  background-image:
+    linear-gradient(var(--card), var(--card)), repeating-conic-gradient(var(--tile) 0 25%, var(--tile-2) 0 50%);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-size:
+    auto,
+    18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:disabled {
+  cursor: default;
+}
+.btn-primary {
+  background: var(--tile);
+  border-color: var(--tile);
+  color: #fff;
+}
+.btn-ok {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+.btn-bad {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+.btn-right {
+  background: var(--ok);
+  border-color: var(--ok);
+  color: #fff;
+}
+.btn-wrong {
+  background: var(--bad);
+  border-color: var(--bad);
+  color: #fff;
+}
+:focus-visible {
+  outline: 3px solid var(--tile-2);
+  outline-offset: 2px;
+}
+
+.answer-input {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 1.15rem; /* ≥16px stops iOS zooming on focus */
+  padding: 10px 14px;
+}
+
+.blank {
+  display: inline-block;
+  min-width: 4.5em;
+  border-bottom: 2.5px solid var(--tile);
+  color: var(--tile);
+  font-weight: 700;
+}
+
+/* Long-form public pages */
+.prose-page h2 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.5rem;
+  line-height: 1.25;
+}
+.prose-page p {
+  margin: 0.5rem 0;
+}
+.prose-page a {
+  color: var(--tile);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-page dl.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+}
+.prose-page dl.facts dt {
+  color: var(--muted);
+}
+.prose-page table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose-page th,
+.prose-page td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose-page th {
+  color: var(--muted);
+  font-weight: 600;
 }
