@@ -1,64 +1,143 @@
 {
   "_comment": "Common confusions shown on word pages. Drawn from the notes in vocabulario.html; extend by hand.",
   "confusions": [
-    { "a": "suceso", "b": "éxito", "explanation": "Suceso means an event or incident; success is éxito." },
-    { "a": "desierto", "b": "postre", "explanation": "Desierto is a desert; dessert is postre." },
-    { "a": "ambicioso", "b": "ambiguo", "explanation": "Ambicioso means ambitious; ambiguous is ambiguo." },
+    {
+      "a": "suceso",
+      "b": "éxito",
+      "explanation": "Suceso means an event or incident; success is éxito.",
+      "bMeaning": "success"
+    },
+    {
+      "a": "desierto",
+      "b": "postre",
+      "explanation": "Desierto is a desert; dessert is postre.",
+      "bMeaning": "dessert"
+    },
+    {
+      "a": "ambicioso",
+      "b": "ambiguo",
+      "explanation": "Ambicioso means ambitious; ambiguous is ambiguo.",
+      "bMeaning": "ambiguous"
+    },
     {
       "a": "resumir",
       "b": "reanudar",
-      "explanation": "Resumir means to summarize; to resume (start again) is reanudar."
+      "explanation": "Resumir means to summarize; to resume (start again) is reanudar.",
+      "bMeaning": "to resume, start again"
     },
-    { "a": "decepcionado", "b": "engañado", "explanation": "Decepcionado means disappointed; deceived is engañado." },
-    { "a": "asombrado", "b": "avergonzado", "explanation": "Asombrado means amazed; ashamed is avergonzado." },
-    { "a": "premio", "b": "precio", "explanation": "Premio is a prize or reward; price is precio." },
-    { "a": "habilidad", "b": "hábito", "explanation": "Habilidad is a skill or ability; a habit is un hábito." },
-    { "a": "harina", "b": "flor", "explanation": "Harina is flour; a flower is una flor." },
-    { "a": "pantalla", "b": "pantalones", "explanation": "Pantalla is a screen; trousers are pantalones." },
+    {
+      "a": "decepcionado",
+      "b": "engañado",
+      "explanation": "Decepcionado means disappointed; deceived is engañado.",
+      "bMeaning": "deceived"
+    },
+    {
+      "a": "asombrado",
+      "b": "avergonzado",
+      "explanation": "Asombrado means amazed; ashamed is avergonzado.",
+      "bMeaning": "ashamed"
+    },
+    {
+      "a": "premio",
+      "b": "precio",
+      "explanation": "Premio is a prize or reward; price is precio.",
+      "bMeaning": "price"
+    },
+    {
+      "a": "habilidad",
+      "b": "hábito",
+      "explanation": "Habilidad is a skill or ability; a habit is un hábito.",
+      "bMeaning": "habit"
+    },
+    {
+      "a": "harina",
+      "b": "flor",
+      "explanation": "Harina is flour; a flower is una flor.",
+      "bMeaning": "flower"
+    },
+    {
+      "a": "pantalla",
+      "b": "pantalones",
+      "explanation": "Pantalla is a screen; trousers are pantalones.",
+      "bMeaning": "trousers"
+    },
     {
       "a": "soledad",
       "b": "solidaridad",
-      "explanation": "Soledad is solitude or loneliness; solidarity is solidaridad."
+      "explanation": "Soledad is solitude or loneliness; solidarity is solidaridad.",
+      "bMeaning": "solidarity"
     },
     {
       "a": "envidioso",
       "b": "celoso",
-      "explanation": "Envidioso means envious of what others have; celoso means jealous, especially in love."
+      "explanation": "Envidioso means envious of what others have; celoso means jealous, especially in love.",
+      "bMeaning": "jealous (in love)"
     },
     {
       "a": "confiado",
       "b": "seguro de sí mismo",
-      "explanation": "Confiado means trusting, sometimes overconfident; self-confident is seguro de sí mismo."
+      "explanation": "Confiado means trusting, sometimes overconfident; self-confident is seguro de sí mismo.",
+      "bMeaning": "self-confident"
     },
     {
       "a": "ilusionado",
       "b": "desilusionado",
-      "explanation": "Ilusionado means excited or hopeful, not disillusioned (desilusionado)."
+      "explanation": "Ilusionado means excited or hopeful, not disillusioned (desilusionado).",
+      "bMeaning": "disillusioned"
     },
-    { "a": "pelear", "b": "discutir", "explanation": "Pelear means to fight; to argue is discutir." },
+    {
+      "a": "pelear",
+      "b": "discutir",
+      "explanation": "Pelear means to fight; to argue is discutir.",
+      "bMeaning": "to argue"
+    },
     {
       "a": "despedir",
       "b": "despedirse",
-      "explanation": "Despedir means to fire or dismiss someone; despedirse means to say goodbye."
+      "explanation": "Despedir means to fire or dismiss someone; despedirse means to say goodbye.",
+      "bMeaning": "to say goodbye"
     },
-    { "a": "comprobar", "b": "demostrar", "explanation": "Comprobar means to check or verify; to prove is demostrar." },
+    {
+      "a": "comprobar",
+      "b": "demostrar",
+      "explanation": "Comprobar means to check or verify; to prove is demostrar.",
+      "bMeaning": "to prove"
+    },
     {
       "a": "fijar",
       "b": "arreglar",
-      "explanation": "Fijar means to fix in place or set (a date); to repair is arreglar."
+      "explanation": "Fijar means to fix in place or set (a date); to repair is arreglar.",
+      "bMeaning": "to repair"
     },
     {
       "a": "aprobar",
       "b": "suspender",
-      "explanation": "Aprobar means to pass an exam; suspender means to fail it (in Spain)."
+      "explanation": "Aprobar means to pass an exam; suspender means to fail it (in Spain).",
+      "bMeaning": "to fail (an exam)"
     },
-    { "a": "fecha", "b": "cita", "explanation": "Fecha is a calendar date; a date with someone is una cita." },
-    { "a": "sabiduría", "b": "conocimiento", "explanation": "Sabiduría is wisdom; knowledge is el conocimiento." },
-    { "a": "nieve", "b": "sobrina", "explanation": "Nieve is snow; a niece is una sobrina." },
+    {
+      "a": "fecha",
+      "b": "cita",
+      "explanation": "Fecha is a calendar date; a date with someone is una cita.",
+      "bMeaning": "a date, an appointment"
+    },
+    {
+      "a": "sabiduría",
+      "b": "conocimiento",
+      "explanation": "Sabiduría is wisdom; knowledge is el conocimiento.",
+      "bMeaning": "knowledge"
+    },
+    {
+      "a": "nieve",
+      "b": "sobrina",
+      "explanation": "Nieve is snow; a niece is una sobrina.",
+      "bMeaning": "niece"
+    },
     {
       "a": "guardar",
       "b": "ahorrar",
-      "explanation": "Guardar means to save a file or keep something; to save money is ahorrar."
+      "explanation": "Guardar means to save a file or keep something; to save money is ahorrar.",
+      "bMeaning": "to save (money)"
     }
   ]
 }

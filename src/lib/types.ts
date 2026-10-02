@@ -64,6 +64,8 @@ export interface Confusion {
   a: string;
   b: string;
   explanation: string;
+  /** English meaning of b, for the comparison table. */
+  bMeaning: string;
 }
 
 export interface Content {

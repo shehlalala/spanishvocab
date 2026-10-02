@@ -7,7 +7,7 @@
  * regex-scraping them, then normalises them into typed entries. Anything that fails to parse or
  * needed a guess is listed in the report. Hand-curated inputs: data/variants.json, data/confusions.json.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { createContext, runInContext } from "node:vm";
 import { join } from "node:path";
 import { formsOf, normalize } from "../src/lib/answer";
@@ -447,16 +447,27 @@ const confusions = confusionFile.confusions.filter((c) => {
   return ok;
 });
 
+// Keep the previous timestamp when nothing changed, so re-running the import doesn't touch dateModified.
+const body = { entries, sentences, topics, sets: [...sets, allMine, b1All, ...topicSets], confusions };
+const outFile = join(ROOT, "data/content.json");
+let updatedAt = new Date().toISOString();
+if (existsSync(outFile)) {
+  const prev = JSON.parse(readFileSync(outFile, "utf8")) as Content;
+  const prevBody = {
+    entries: prev.entries,
+    sentences: prev.sentences,
+    topics: prev.topics,
+    sets: prev.sets,
+    confusions: prev.confusions,
+  };
+  if (JSON.stringify(prevBody) === JSON.stringify(body)) updatedAt = prev.updatedAt;
+}
 const content: Content = {
-  version: new Date().toISOString().slice(0, 10),
-  updatedAt: new Date().toISOString(),
-  entries,
-  sentences,
-  topics,
-  sets: [...sets, allMine, b1All, ...topicSets],
-  confusions,
+  version: updatedAt.slice(0, 10),
+  updatedAt,
+  ...body,
 };
-writeFileSync(join(ROOT, "data/content.json"), JSON.stringify(content, null, 1) + "\n");
+writeFileSync(outFile, JSON.stringify(content, null, 1) + "\n");
 
 // ---------- 8. Report ----------
 
