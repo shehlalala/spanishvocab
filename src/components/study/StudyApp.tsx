@@ -81,7 +81,7 @@ export function StudyApp() {
             key={m.id}
             aria-pressed={m.id === mode}
             onClick={() => go({ mode: m.id })}
-            className={`min-h-11 flex-1 px-1 text-[0.88rem] font-semibold ${m.id === mode ? "bg-tile text-white" : "text-tile"}`}
+            className={`min-h-11 flex-1 px-1 text-[0.88rem] font-semibold ${m.id === mode ? "bg-tile text-card" : "text-tile"}`}
           >
             {m.label}
           </button>

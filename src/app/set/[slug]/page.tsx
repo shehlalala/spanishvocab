@@ -78,7 +78,7 @@ export default async function SetPage({ params }: Props) {
         {MODES.map((m) => (
           <Link
             key={m.id}
-            className={`btn !no-underline ${m.id === "cards" ? "btn-primary !text-white" : ""}`}
+            className={`btn !no-underline ${m.id === "cards" ? "btn-primary" : ""}`}
             href={`/study?set=${set.slug}&mode=${m.id}`}
           >
             {m.label}

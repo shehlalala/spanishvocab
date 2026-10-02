@@ -110,7 +110,7 @@ export default async function WordPage({ params }: Props) {
         <p className="mt-3 flex flex-wrap gap-2">
           {(sets[0] ?? (topicSets[0] ? setBySlug(`b1-${topicSets[0]}`) : undefined)) ? (
             <Link
-              className="btn btn-primary !text-white !no-underline"
+              className="btn btn-primary !no-underline"
               href={`/study?set=${(sets[0] ?? setBySlug(`b1-${topicSets[0]}`))?.slug}&mode=cards`}
             >
               Practise this word

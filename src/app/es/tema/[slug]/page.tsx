@@ -101,7 +101,7 @@ export default async function TopicPage({ params }: Props) {
       </p>
       <p className="mt-3 text-lg">{lead}</p>
       <p className="mt-3">
-        <Link className="btn btn-primary !text-white !no-underline" href={`/study?set=b1-${t.slug}&mode=cards`}>
+        <Link className="btn btn-primary !no-underline" href={`/study?set=b1-${t.slug}&mode=cards`}>
           Study these {entries.length} words
         </Link>
       </p>

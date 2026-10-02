@@ -108,7 +108,7 @@ body {
 .btn-primary {
   background: var(--tile);
   border-color: var(--tile);
-  color: #fff;
+  color: var(--card);
 }
 .btn-ok {
   border-color: var(--ok);
@@ -121,12 +121,12 @@ body {
 .btn-right {
   background: var(--ok);
   border-color: var(--ok);
-  color: #fff;
+  color: var(--card);
 }
 .btn-wrong {
   background: var(--bad);
   border-color: var(--bad);
-  color: #fff;
+  color: var(--card);
 }
 :focus-visible {
   outline: 3px solid var(--tile-2);
