@@ -1,0 +1,21 @@
+{
+  "_comment": "Spain-specific headwords (by bare lemma) and their Latin American equivalents. The first es-419 form is the one shown; the rest are also accepted. Draft list: review and extend.",
+  "variants": [
+    { "lemma": "zumo", "es419": ["el jugo"] },
+    { "lemma": "tirita", "es419": ["la curita"] },
+    { "lemma": "aparcamiento", "es419": ["el estacionamiento"] },
+    { "lemma": "suspender", "es419": ["reprobar"] },
+    { "lemma": "jersey", "es419": ["el suéter"] },
+    { "lemma": "rotulador", "es419": ["el marcador", "el plumón"] },
+    { "lemma": "gasolinera", "es419": ["la estación de servicio", "la gasolinería"] },
+    { "lemma": "acera", "es419": ["la banqueta", "la vereda", "el andén"] },
+    { "lemma": "cazadora", "es419": ["la chamarra", "la campera"] },
+    { "lemma": "pintalabios", "es419": ["el lápiz labial", "el labial"] },
+    { "lemma": "maletero", "es419": ["la cajuela", "el baúl"] },
+    { "lemma": "matrícula", "es419": ["la placa", "la patente"] },
+    { "lemma": "furgoneta", "es419": ["la camioneta"] },
+    { "lemma": "intermitente", "es419": ["la direccional", "el guiño"] },
+    { "lemma": "atasco", "es419": ["el embotellamiento", "el trancón"] },
+    { "lemma": "salón", "es419": ["la sala"] }
+  ]
+}
