@@ -14,7 +14,7 @@ export interface Verdict {
   expected: string;
 }
 
-const ARTICLE_RE = /^(el|la|los|las|un|una|unos|unas|el \/ la|la \/ el) /;
+const ARTICLE_RE = /^(el \/ la|la \/ el|el|la|los|las|un|una|unos|unas) /;
 
 /** Lowercase, trim, drop ¡!¿?.,;:"' and a leading article, collapse whitespace. */
 export function normalize(s: string): string {
