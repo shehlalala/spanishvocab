@@ -3,7 +3,7 @@
  *
  *   npm run import
  *
- * Runs the HTML's own data declarations (S1–S8, SENT, B1) in an isolated VM context instead of
+ * Runs the HTML's own data declarations (S1, S2, … SENT, B1) in an isolated VM context instead of
  * regex-scraping them, then normalises them into typed entries. Anything that fails to parse or
  * needed a guess is listed in the report. Hand-curated inputs: data/variants.json, data/confusions.json.
  */
@@ -49,7 +49,11 @@ const dataBlock = script.split("const LABELS")[0];
 if (!dataBlock) throw new Error("Could not find the data section (before const LABELS)");
 const ctx: Record<string, unknown> = {};
 createContext(ctx);
-runInContext(`${dataBlock}\nthis.__out = { S: [S1,S2,S3,S4,S5,S6,S7,S8], SENT, B1 };`, ctx, { timeout: 2000 });
+// Every "const S<n> = `…`" block is a personal set; adding S9 to the HTML adds Set 9.
+const setNames = [...dataBlock.matchAll(/const (S\d+) = `/g)]
+  .map((m) => m[1] ?? "")
+  .sort((a, b) => Number(a.slice(1)) - Number(b.slice(1)));
+runInContext(`${dataBlock}\nthis.__out = { S: [${setNames.join(",")}], SENT, B1 };`, ctx, { timeout: 2000 });
 const out = ctx.__out as { S: unknown[]; SENT: unknown; B1: unknown };
 
 function isRawSent(x: unknown): x is RawSent {
@@ -150,7 +154,7 @@ function splitNote(display: string, note: string): { note: string; privateNote: 
 const POS_VALUES: readonly Pos[] = ["noun", "verb", "adjective", "adverb", "phrase", "pronoun", "determiner"];
 const entries: Entry[] = [];
 const byId = new Map<string, Entry>();
-const sets: StudySet[] = Array.from({ length: 8 }, (_, i) => ({
+const sets: StudySet[] = Array.from({ length: out.S.length }, (_, i) => ({
   slug: `set-${i + 1}`,
   name: `My words · Set ${i + 1}`,
   kind: "mine" as const,
@@ -411,7 +415,7 @@ for (const [key, s] of Object.entries(rawSent)) {
   const ids = displayToIds.get(key);
   const id = ids?.[0];
   if (!id) {
-    problems.push(`SENT key "${key}" does not match any word in Sets 1–8`);
+    problems.push(`SENT key "${key}" does not match any word in the personal sets`);
     continue;
   }
   const entry = byId.get(id);
@@ -472,8 +476,10 @@ writeFileSync(outFile, JSON.stringify(content, null, 1) + "\n");
 // ---------- 8. Report ----------
 
 const sourceMine = mine.length;
+/** Expected counts guard against silent parse failures; update them when you add words to the HTML. */
+const EXPECTED_MINE = 337;
 const counts = [
-  ["Source lines in S1–S8", sourceMine, 337],
+  ["Source lines in personal sets", sourceMine, EXPECTED_MINE],
   ["Source B1 rows", b1.length, 1128],
   ["Source B1 topics", topics.length, 47],
   ["Source sentences (SENT)", Object.keys(rawSent).length, 227],
