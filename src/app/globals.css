@@ -192,3 +192,10 @@ body {
   color: var(--muted);
   font-weight: 600;
 }
+.prose-page a.btn {
+  color: var(--ink);
+  text-decoration: none;
+}
+.prose-page a.btn-primary {
+  color: var(--card);
+}
